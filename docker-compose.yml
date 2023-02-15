@@ -1,0 +1,51 @@
+version: "1.0"
+
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - main
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command:
+      [
+        "./wait-for-postgres.sh",
+        "python",
+        "/app/manage.py",
+        "runserver",
+        "0.0.0.0:8000",
+      ]
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=1
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - main
+
+volumes:
+  postgres_data:
+
+networks:
+  main:

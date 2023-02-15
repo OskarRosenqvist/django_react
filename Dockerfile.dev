@@ -1,0 +1,17 @@
+# Using Python image
+FROM python:3.9-alpine
+ENV PYTHONUNBUFFERED 1
+
+RUN apk update && apk add gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev
+
+WORKDIR /app
+
+# Add requirements.txt and install requirements to use docker cache
+ADD ./requirements.txt /app/requirements.txt
+
+# Install required python packages
+RUN pip install -r requirements.txt
+
+# Copy whole app into the container
+COPY . /app/
+
