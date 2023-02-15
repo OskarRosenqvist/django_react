@@ -1,3 +1,5 @@
+<img src="https://github.com/OskarRosenqvist/django_react/blob/main/frontend/src/static/images/plocket.png" alt=""></img>
+
 ## Start backend
 
 In the project root directory, you can run:
