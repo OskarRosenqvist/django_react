@@ -13,3 +13,4 @@ class AddSerializer(ModelSerializer):
             'price',
             'description',
         )
+        read_only_fields = ('id',)
