@@ -4,18 +4,23 @@
 
 In the project root directory, you can run:
 
-### `docker compose build`
-### `docker compose run --rm backend python manage.py migrate`
-### `docker compose run --rm backend python manage.py createsuperuser`
-### `docker compose up`
+<ul>
+  <li>docker compose build</li>
+  <li>docker compose run --rm backend python manage.py migrate</li>
+  <li>docker compose run --rm backend python manage.py createsuperuser</li>
+  <li>docker compose up</li>
+</ul>
+
 
 
 ## Start frontend
 
 In the project frontend directory, you can run:
 
-### `npm install`
-### `npm start`
+<ul>
+  <li>npm install</li>
+  <li>npm start</li>
+</ul>
 
 Go to http://localhost:3000/ to test add frontend
 Go to http://localhost:8000/api/v1/adds/ to test backend api
