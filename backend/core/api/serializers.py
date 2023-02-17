@@ -17,10 +17,9 @@ class PlocketUserSerializer(ModelSerializer):
             'email',
             'can_edit_others',
         )
-        read_only_fields = ('id',)
+        read_only_fields = (
+            'id',
+        )
 
     def get_can_edit_others(self, obj):
-        current_user = self.context['request'].user
-        print(current_user)
-        # print()
-        return current_user.has_perm('can_edit_others')
+        return obj.has_perm('core.can_edit_others')
