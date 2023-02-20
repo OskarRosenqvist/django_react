@@ -1,20 +1,24 @@
 import { Button, Container, TextField, Typography } from '@mui/material'
-import { useState } from 'react'
-import { fetchToken, login } from "../../services/api"
-
+import { useState, useContext } from 'react'
+import { fetchToken } from "../../services/api"
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const HandleInput = () => {
         let formData = {
             'username': `${username}`,
             'password': `${password}`,
         }
-        fetchToken(formData).then(res => {
-            login(res.data.access)
+        fetchToken(formData, null).then(res => {
+            login(res.data)
+            navigate('/')
         })
     }
 

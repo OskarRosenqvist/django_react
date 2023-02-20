@@ -1,6 +1,6 @@
 import { Button, Container, Card, CardContent, TextField, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
-import { getAddList, createAdd } from "../../services/api"
+import { GetAddList, createAdd } from "../../services/api"
 
 
 
@@ -23,7 +23,7 @@ export const Adds = () => {
     }
 
     useEffect(() => {
-        getAddList().then(res => {
+        GetAddList().then(res => {
             setAddList(res.data)
         })
         setLoading(false)
