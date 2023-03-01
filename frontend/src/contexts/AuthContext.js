@@ -1,5 +1,5 @@
 import { useState, createContext } from 'react'
-import { authService } from '../services/authentication'
+import { authService } from '../services/auth'
 
 export const AuthContext = createContext();
 
@@ -14,8 +14,8 @@ export function AuthContextProvider({ children }) {
         setUser(null)
     }
     
-    function login(token) {
-        const user = authService.login(token)
+    function login(data) {
+        const user = authService.login(data)
         setUser(user)
     }
 

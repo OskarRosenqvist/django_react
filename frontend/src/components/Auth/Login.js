@@ -1,6 +1,5 @@
 import { Button, Container, TextField, Typography } from '@mui/material'
 import { useState, useContext } from 'react'
-import { fetchToken } from "../../services/api"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -12,14 +11,12 @@ export const Login = () => {
     const navigate = useNavigate()
 
     const HandleInput = () => {
-        let formData = {
+        let data = {
             'username': `${username}`,
             'password': `${password}`,
         }
-        fetchToken(formData, null).then(res => {
-            login(res.data)
-            navigate('/')
-        })
+        login(data);
+        navigate('/');
     }
 
     return (

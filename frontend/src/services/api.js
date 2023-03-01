@@ -1,13 +1,11 @@
 import axios from "axios";
-import { useContext } from 'react';
-import { AuthContext } from "../contexts/AuthContext";
-import { authService } from "./authentication"
+import { authService } from "./auth"
 
-let baseURL = "http://localhost:8000/"
+let baseURL = process.env.NODE_ENV === 'production'? "http://" : "http://localhost:8000/"
 let apiURL = `${baseURL}api/v1/`
 let authURL = `${baseURL}api/`
 
-let API = {
+export let API = {
     Add: `${apiURL}adds/`,
     auth: {
         access: `${authURL}token/`,
@@ -17,16 +15,16 @@ let API = {
 
 
 export function GetAddList() {
-    let user = JSON.parse(localStorage.getItem('user'))
+    let user = authService.getUser();
 
     const response = axios.get(API.Add, {
         headers: {
-            Authorization: "JWT " + user.token.access,
+            Authorization: "JWT " + user.tokens.access,
         }
     }).catch(function (error) {
         if (error.response.status === 401) {
             console.log('error 401')
-            const response = axios.post(API.auth.refresh, {refresh: user.token.refresh}, {
+            axios.post(API.auth.refresh, {refresh: user.tokens.refresh}, {
                 headers: {
                     Authorization: `JWT 1`,
                     'Content-Type': 'application/json',
@@ -38,7 +36,7 @@ export function GetAddList() {
                 console.log(user)
                 const response = axios.get(API.Add, {
                     headers: {
-                        Authorization: "JWT " + user.token.access,
+                        Authorization: "JWT " + user.tokens.access,
                     }
             })
             console.log(response)
@@ -56,23 +54,5 @@ export function createAdd(formData) {
             Authorization: "JWT " +localStorage.getItem('user'),
         }
     })
-    return response
-}
-export function fetchToken(formData, token) {
-    let response = 'none'
-    try {
-        const response = axios.post(API.auth.access, formData, {
-            headers: {
-                Authorization: `JWT ${token}`,
-                'Content-Type': 'application/json',
-                accept: 'application/json'
-    
-            }
-        })
-        return response
-    } catch (e) {
-        console.log(e)
-    }
-    
     return response
 }
