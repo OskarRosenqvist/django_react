@@ -1,12 +1,16 @@
-# Using Python image
+# Using Python image on Alpine Linux Lightweight designed to run in RAM
 FROM python:3.9-alpine
+
+# Enabling real-time printout to the terminal (logg/debug)
 ENV PYTHONUNBUFFERED 1
 
+# Alpine Package Keeper: gcc GNUcompiler, linux-headers, musl, libffi for compiling and running code,
+# zlib compression/uncompression, jpeg for images.
 RUN apk update && apk add gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev
 
 WORKDIR /app
 
-# Add requirements.txt and install requirements to use docker cache
+# Add requirements.txt
 ADD ./requirements.txt /app/requirements.txt
 
 # Install required python packages
@@ -14,4 +18,3 @@ RUN pip install -r requirements.txt
 
 # Copy whole app into the container
 COPY . /app/
-

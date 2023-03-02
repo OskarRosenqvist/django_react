@@ -2,6 +2,7 @@
 # wait-for-postgres.sh
 set -e
 
+echo "Waiting for database..."
 until python /app/manage.py check --database default
 do
   sleep 1
