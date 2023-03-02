@@ -21,7 +21,7 @@ services:
       [
         "./wait-for-postgres.sh",
         "python",
-        "./manage.py",
+        "/app/manage.py",
         "runserver",
         "0.0.0.0:8000",
       ]
