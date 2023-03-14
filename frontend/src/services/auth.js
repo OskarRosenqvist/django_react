@@ -10,11 +10,11 @@ function login(data) {
         }
     }).then(res => {
         if (res.data) {
-            const user = {
+            let user = {
                 tokens: res.data,
             }
             localStorage.setItem('user', JSON.stringify(user))
-            return user
+            return user 
         }
     })
 }

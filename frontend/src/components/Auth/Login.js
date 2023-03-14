@@ -1,24 +1,29 @@
 import { Button, Container, TextField, Typography, Box } from '@mui/material'
 import { useState, useContext } from 'react'
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
-
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [userError, setUserError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-    const { login } = useContext(AuthContext);
+    const { login, user, loginError, setLoginError } = useContext(AuthContext);
+
+
     const navigate = useNavigate()
 
     const HandleInput = () => {
+        setLoginError(false)
         let data = {
             'username': `${username}`,
             'password': `${password}`,
         }
         login(data);
-        navigate('/');
+        console.log({user})
+        if ({user}) {
+            navigate('/')
+        }
     }
 
     return (
@@ -51,11 +56,12 @@ export const Login = () => {
                 label="password" 
                 type="password"
                 error={passwordError}
-                onBlur ={() => password.length<8? setPasswordError(true) : setPasswordError(false)}
-                helperText={passwordError? 'Password must be 8 characters!' : ''}
+                onBlur ={() => password.length<1? setPasswordError(true) : setPasswordError(false)}
+                helperText={passwordError? 'Enter password!' : ''}
                 onInput={e => setPassword(e.target.value)} 
                 required={true}
                 />
+                <Typography sx={{fontColor: 'red', fontStyle: 'italic', fontSize: 10}} hidden={!loginError}>Enter correct username and password!</Typography>
                 </Container>
                 <Button sx={{ background: 'lightblue', fontWeight: 'bold' }} id="submit" onClick={HandleInput}>Submit</Button>
             </Box>

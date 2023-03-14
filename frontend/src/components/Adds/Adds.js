@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { GetAddList, createAdd } from "../../services/api"
 
 
-
 export const Adds = () => {
     const [addList, setAddList] = useState();
     const [newAddTitle, setNewAddTitle] = useState('');
@@ -25,8 +24,8 @@ export const Adds = () => {
     useEffect(() => {
         GetAddList().then(res => {
             setAddList(res.data)
+            setLoading(false)
         })
-        setLoading(false)
     }, [loading]);
 
     return (

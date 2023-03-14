@@ -15,8 +15,10 @@ export let API = {
 
 
 export function GetAddList() {
+    
     let user = authService.getUser();
-
+    
+    if (user) {
     const response = axios.get(API.Add, {
         headers: {
             Authorization: "JWT " + user.tokens.access,
@@ -46,7 +48,7 @@ export function GetAddList() {
     })
 
     return response 
-}
+}}
 
 export function createAdd(formData) {
     const response = axios.post(API.Add, formData, {
