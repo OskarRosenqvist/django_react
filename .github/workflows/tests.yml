@@ -36,15 +36,15 @@ jobs:
 
     - name: Run DB Migrations
       run:  |
-      cd ./backend
-      docker-compose -f ./docker-test.yml run --rm backend python manage.py migrate
+        cd ./backend
+        docker-compose -f ./docker-test.yml run --rm backend python manage.py migrate
 
     - name: Run Django Tests
       run:  |
-      cd ./backend
-      docker-compose -f ./docker-test.yml run --rm backend python manage.py test
+        cd ./backend
+        docker-compose -f ./docker-test.yml run --rm backend python manage.py test
 
     - name: Tear down the Stack
       run:  |
-      cd ./backend
-      docker-compose -f ./docker-test.yml down
+        cd ./backend
+        docker-compose -f ./docker-test.yml down
