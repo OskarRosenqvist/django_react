@@ -17,7 +17,10 @@ services:
       dockerfile: Dockerfile.dev
     command:
       [
-        "./app/wait-for-postgres.sh",
+        "echo",
+        "waiting for postgres...",
+        "sleep",
+        "30",
         "python",
         "/app/manage.py",
         "runserver",
