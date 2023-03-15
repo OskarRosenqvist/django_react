@@ -32,13 +32,13 @@ jobs:
     - name: Build the Stack
       run:  |
         cd ./backend
-        docker-compose -f ./docker-compose.yml build
+        docker-compose -f ./docker-test.yml build
 
     - name: Run DB Migrations
-      run:  docker-compose -f ./docker-compose.yml run --rm backend python manage.py migrate
+      run:  docker-compose -f ./docker-test.yml run --rm backend python manage.py migrate
 
     - name: Run Django Tests
-      run:  docker-compose -f ./docker-compose.yml run --rm backend python manage.py test
+      run:  docker-compose -f ./docker-test.yml run --rm backend python manage.py test
 
     - name: Tear down the Stack
-      run:  docker-compose -f ./docker-compose.yml down
+      run:  docker-compose -f ./docker-test.yml down
