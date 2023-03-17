@@ -25,9 +25,10 @@ jobs:
         python-version: '3.10'
     - name: install dependencies
       run: |
-        cd ./backend
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        echo 'no need to install dependencies since we are using docker'
+        echo 'cd ./backend'
+        echo 'python -m pip install --upgrade pip'
+        echo 'pip install -r requirements.txt'
     - name: Build the Stack
       run:  |
         cd ./backend
