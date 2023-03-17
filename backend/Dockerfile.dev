@@ -1,5 +1,5 @@
 # Using Python image on Alpine Linux Lightweight designed to run in RAM
-FROM python:3.9-alpine
+FROM python:3.10-alpine
 
 # Enabling real-time printout to the terminal(logg/debug)
 ENV PYTHONUNBUFFERED 1
