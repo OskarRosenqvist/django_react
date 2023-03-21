@@ -50,7 +50,7 @@ on:
 
 env:
   PROJECT_ID: pioneering-tome-381209 # TODO: update Google Cloud project id
-  GAR_LOCATION: europe # TODO: update Artifact Registry location
+  GAR_LOCATION: europe-north1 # TODO: update Artifact Registry location
   SERVICE: backend-service # TODO: update Cloud Run service name
   REGION: europe-north1 # TODO: update Cloud Run service region
 
