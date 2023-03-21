@@ -51,7 +51,7 @@ on:
 env:
   PROJECT_ID: pioneering-tome-381209 # TODO: update Google Cloud project id
   GAR_LOCATION: europe-north1 # TODO: update Artifact Registry location
-  SERVICE: backend-service # TODO: update Cloud Run service name
+  SERVICE: myartifactrepo # TODO: update Cloud Run service name
   REGION: europe-north1 # TODO: update Cloud Run service region
 
 jobs:
@@ -95,7 +95,7 @@ jobs:
       - name: Build and Push Container
         run: |-
           cd ./backend
-          gcloud auth configure-docker europe-north1-docker.pkg.dev
+          # gcloud auth configure-docker europe-north1-docker.pkg.dev
           docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}" ./
           docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
 
