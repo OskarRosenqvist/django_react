@@ -95,7 +95,7 @@ jobs:
       - name: Build and Push Container
         run: |-
           cd ./backend
-          #gcloud auth configure-docker europe-north1-docker.pkg.dev
+          gcloud auth configure-docker europe-north1-docker.pkg.dev
           docker build -t europe-north-1-docker.pkg.dev/pioneering-tome-381209/myartifactrepo/myimage:latest ./
           docker push europe-north-1-docker.pkg.dev/pioneering-tome-381209/myartifactrepo/myimage:latest
 
