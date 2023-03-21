@@ -14,7 +14,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy whole app into the container
-COPY prod_start.sh /app/
+COPY start.sh /app/
 COPY backend /app/
 # COPY gcloud-service-key.json /app/
 # Start server
