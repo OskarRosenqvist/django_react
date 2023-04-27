@@ -2,11 +2,12 @@
 
 ## Start backend
 
-In the project root directory, you can run:
+In the project backend directory, you can run:
 
 <ul>
   <li>docker compose build</li>
   <li>docker compose run --rm backend python manage.py migrate</li>
+  <li>docker compose run --rm backend python manage.py loaddata</li>
   <li>docker compose run --rm backend python manage.py createsuperuser</li>
   <li>docker compose up</li>
 </ul>

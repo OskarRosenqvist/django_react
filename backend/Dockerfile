@@ -2,7 +2,7 @@
 FROM python:3.10-alpine
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update && apk add ca-certificates gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev bash
+RUN apk update && apk add ca-certificates gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev bash binutils
 
 WORKDIR /app
 

@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Alpine Package Keeper: gcc GNUcompiler, linux-headers, musl, libffi for compiling and running code,
 # zlib compression/uncompression, jpeg for images.
-RUN apk update && apk add gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev
+RUN apk update && apk add gcc postgresql-dev linux-headers musl-dev libffi-dev jpeg-dev zlib-dev binutils proj-dev gdal-dev geos-dev
 
 WORKDIR /app
 

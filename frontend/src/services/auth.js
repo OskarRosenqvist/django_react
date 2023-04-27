@@ -40,8 +40,8 @@ function fetchToken(formData, token) {
 
 function refreshToken(token) {
     let user = JSON.parse(localStorage.getItem('user'))
-    user.token.access = token.access
-    user = login(user.token)
+    user.tokens.access = token.access
+    user = login(user.tokens)
     return user
 }
 

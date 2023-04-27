@@ -1,12 +1,14 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
+from rest_framework_gis.serializers import GeoFeatureModelSerializer, GeometrySerializerMethodField, GeometryField
 from adds.models import Add
 
 
-class AddSerializer(ModelSerializer):
+class AddSerializer(GeoFeatureModelSerializer):
     is_owner = SerializerMethodField()
 
     class Meta:
         model = Add
+        geo_field = 'location'
 
         fields = (
             'id',
