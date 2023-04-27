@@ -1,4 +1,4 @@
-<img src="https://github.com/OskarRosenqvist/django_react/blob/main/frontend/src/static/images/plocket.png" alt=""></img>
+<img src="https://github.com/OskarRosenqvist/django_react/blob/main/frontend/src/static/images/geoplocket.jpg" alt=""></img>
 
 ## Start backend
 

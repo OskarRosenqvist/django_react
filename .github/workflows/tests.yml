@@ -38,6 +38,8 @@ jobs:
       run:  |
         cd ./backend
         docker-compose -f ./docker-test.yml up -d db
+        echo 'wait 10 sec'
+        sleep 10
         docker-compose -f ./docker-test.yml run backend python manage.py migrate
 
     - name: Run Django Tests
