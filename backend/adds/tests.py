@@ -37,5 +37,6 @@ class AddTestView(TestView):
 
     def test_get_adds(self):
         response = self.client.get('/api/v1/adds/')
-        self.assertEqual(response.data.get('results')[0].get('title'), 'Add 1')
-        self.assertEqual(len(response.data.get('results')), 2)
+        print(response.data.get('results').get('features')[0].get('properties'))
+        self.assertEqual(response.data.get('results').get('features')[0].get('properties').get('title'), 'Add 1')
+        self.assertEqual(len(response.data.get('results').get('features')), 2)
